@@ -88,12 +88,15 @@
 			<div class="visible-xs clearfix"></div>
 			<nav class="main-menu">
 				<ul class="l-inline ov">
-					<li><a href="index.html">Trang chủ</a></li>
+					<li><a href="{{ route('home-page') }}">Trang chủ</a></li>
 					<li><a href="#">Sản phẩm</a>
 						<ul class="sub-menu">
-							<li><a href="product_type.html">Sản phẩm 1</a></li>
-							<li><a href="product_type.html">Sản phẩm 2</a></li>
-							<li><a href="product_type.html">Sản phẩm 4</a></li>
+							@php
+								$categories = DB::table('type_products')->get();
+							@endphp
+							@foreach ($categories as $item)
+								<li><a href="{{ route('products') }}?id={{ $item->id }}">{{ $item->name }}</a></li>
+							@endforeach
 						</ul>
 					</li>
 					<li><a href="about.html">Giới thiệu</a></li>

@@ -16,5 +16,15 @@ Route::get('/', [
 		'uses' => 'FrontendController@showHome'
 	]);
 
+Route::get('/san-pham', [
+		'as'   => 'products',
+		'uses' => 'FrontendController@showProduct'
+	]);
+
+Route::get('/chi-tiet-san-pham/{id}', [
+		'as'   => 'detail',
+		'uses' => 'FrontendController@showDetail'
+	]);
+
 Route::group(['middleware' => 'auth'], function () {
 	});
